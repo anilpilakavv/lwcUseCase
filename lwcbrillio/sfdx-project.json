@@ -1,11 +1,33 @@
 {
-  "packageDirectories": [
-    {
-      "path": "force-app",
-      "default": true
+  "orgName": "Pharm Assist",
+  "description": "LWC Scratch Org",
+  "country": "US",
+  "edition": "Enterprise",
+  "hasSampleData": false,
+  "language": "en_US",
+  "features": [
+    "Communities",
+    "ContactsToMultipleAccounts",
+    "MultiCurrency",
+    "CascadeDelete",
+    "PersonAccounts",
+    "StateAndCountryPicklist",
+    "Entitlements",
+    "LiveAgent"
+    ],
+  "packageDirectories": [{ "path": "force-app", "default": true }],
+  "settings": {
+    "orgPreferenceSettings": {
+      "chatterEnabled": true,
+	    "s1DesktopEnabled": true,
+      "networksEnabled": true,
+	    "s1EncryptedStoragePref2": false
+    },
+    "omniChannelSettings":{
+      "enableOmniChannel": true
+    },
+    "caseSettings":{
+      "systemUserEmail": "nitin.trailhead@gmail.com"
     }
-  ],
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "47.0"
+  }
 }
