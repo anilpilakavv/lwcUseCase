@@ -1,0 +1,16 @@
+<template>
+    <div>
+        <template if:true={suggestions.data}>
+            <ul class="slds-grid slds-grid_pull-padded slds-wrap">
+                <template for:each={suggestions.data} for:item="suggestion">
+                    <c-suggestion-tile
+                        key={suggestion}
+                        suggestion={suggestion}
+                        class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-1">
+                    </c-suggestion-tile>
+                </template>
+            </ul>
+        </template>
+    </div>
+    
+</template>

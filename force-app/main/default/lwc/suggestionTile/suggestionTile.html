@@ -1,0 +1,27 @@
+<template> 
+    <div class="slds-m-top_small">
+        <lightning-card title={suggestion.Account__r.Name} icon-name="action:user" class="Nitin-card-bg">
+            <div onclick={handleSuggestionSelected}
+                class="slds-text-link_reset slds-truncate">
+                <div class="slds-p-around_small" >
+                    <span>
+                    <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon></span>
+                    <span class="slds-p-left_x-small">{suggestion.Subject__c}</span>
+                    <p><br/> </p>
+                    <lightning-formatted-rich-text
+                        value={suggestion.Description_Rich_Text__c}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+
+            <footer role="contentinfo" class="slds-p-around_large">
+                <!-- LAYOUT GRID -->
+                <div class="slds-float_left">
+                <span><lightning-icon icon-name="utility:clock" size="xx-small"></lightning-icon></span>
+                <span> Posted {suggestion.CreatedDate}</span>  </div>        
+                <span class="slds-float_right">&copy; Your Name Here</span>
+            </footer>
+
+        </lightning-card>
+    </div>
+</template>
