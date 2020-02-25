@@ -1,0 +1,39 @@
+.card {
+    background-color: white;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(165, 165, 165, 0.500);
+}
+
+.card__header{
+    padding: 20px;
+    font-weight: bold;
+}
+
+.card__body {
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-style: solid;
+    border-color: rgba(165, 165, 165, 0.500);
+    padding: 20px;
+    background-color: inherit;
+}
+
+.card__footer {
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+.confirmButton{
+    float: right;
+}
+
+h1{
+    font-size: 20px;
+}
+
+h2{
+    font-size: 14px;
+}
