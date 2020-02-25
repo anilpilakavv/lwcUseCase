@@ -1,0 +1,31 @@
+<template>
+    <div class= "card">
+        <!--Header-->
+        <div class="card__header ">
+            <h1>Schedule</h1>
+        </div>
+        
+        <!--Body-->
+        <div class="card__body ">
+            <h2>
+                <lightning-icon icon-name="utility:monthlyview" alternative-text="Create Calender Event" title="Create Calender Event"></lightning-icon>
+                &nbsp;A calender event will be added for the suggested visit / call.
+            </h2>
+            <br/>
+            <lightning-input name="eventTitle" type="text" label="Event Title/Description" placeholder="Enter title.."></lightning-input>
+            <br/>
+            <lightning-input name="eventLocation" type="text" label="Location" placeholder="Enter event location.."></lightning-input>
+            <br/>
+            <lightning-input name="eventStartTime" type="dateTime" label="Event Start Date and Time" placeholder=".."></lightning-input>
+            <lightning-input name="eventEndTime" type="dateTime" label="Event End Date and Time" placeholder=".."></lightning-input>
+        </div>
+        
+        <!--Footer-->
+        <div class="card__footer">
+            <span class= "confirmButton">
+                <lightning-button label="Ok" title="Confirm Schedule" onclick={confirmSchedule} class="slds-m-left_x-small"></lightning-button>
+            </span>
+        </div>
+        <br/>
+    </div>
+</template>
