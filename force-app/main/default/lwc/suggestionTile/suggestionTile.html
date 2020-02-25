@@ -18,9 +18,20 @@
                 <div class="slds-float_left">
                 <span><lightning-icon icon-name="utility:clock" size="xx-small"></lightning-icon></span>
                 <span> Posted {suggestion.CreatedDate}</span>  </div>        
-                <span class="slds-float_right">Button placeholder</span>
+                <span class="slds-float_right"><lightning-button label="Accept" title="Accept" onclick={confirmSchedule}  class="slds-m-left_x-small"></lightning-button></span>
             </footer>
 
         </lightning-card>
     </div>
+    <template if:true={showScheduleModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <c-schedule-popup-card
+                    suggestion-modal={suggestion}>
+                </c-schedule-popup-card>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
 </template>

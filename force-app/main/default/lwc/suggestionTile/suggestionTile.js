@@ -1,8 +1,9 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 
 export default class SuggestionTile extends NavigationMixin(LightningElement) {
     @api suggestion;
+    @track showScheduleModal = false;
 
     handleSuggestionSelected() {
         this[NavigationMixin.Navigate]({
@@ -13,5 +14,9 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
             }
         });
     }
+
+    confirmSchedule(){
+        this.showScheduleModal = true;
+    } 
 
 }

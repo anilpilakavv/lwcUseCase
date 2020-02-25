@@ -12,11 +12,11 @@
                 &nbsp;A calender event will be added for the suggested visit / call.
             </h2>
             <br/>
-            <lightning-input name="eventTitle" type="text" label="Event Title/Description" placeholder="Enter title.."></lightning-input>
+            <lightning-input name="eventTitle" type="text" label="Event Title/Description" placeholder="Enter title.." value={suggestionModal.Subject__c}></lightning-input>
             <br/>
-            <lightning-input name="eventLocation" type="text" label="Location" placeholder="Enter event location.."></lightning-input>
+            <lightning-input name="eventLocation" type="text" label="Location" placeholder="Enter event location.." value={suggestionModal.ChannelType__c}></lightning-input>
             <br/>
-            <lightning-input name="eventStartTime" type="dateTime" label="Event Start Date and Time" placeholder=".."></lightning-input>
+            <lightning-input name="eventStartTime" type="dateTime" label="Event Start Date and Time" placeholder=".." value={suggestionModal.SuggestedDateAndTime__c}></lightning-input>
             <lightning-input name="eventEndTime" type="dateTime" label="Event End Date and Time" placeholder=".."></lightning-input>
         </div>
         
