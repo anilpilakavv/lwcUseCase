@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Contact List" icon-name="standard:contact_list">
+        <template if:true={contacts}>
+            <template for:each={contacts} for:item="contact">
+                <div class="slds-m-around_small" key={contact.Id}>
+                    Name: {contact.Name}<br/>
+                    Email: {contact.Email}<br/>
+                    Phone: {contact.Phone}
+                </div>
+            </template>
+        </template>
+        Total Records {recordCount} Displaying {page} of {totalPages}
+    </lightning-card>
+    <c-paginator current-page={page} onnext={handleNext} onfirst={handleFirst} onlast={handleLast} onprevious ={handlePrevious}></c-paginator>
+</template>
