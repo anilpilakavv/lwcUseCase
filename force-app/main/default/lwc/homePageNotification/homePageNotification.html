@@ -1,7 +1,9 @@
 <template>
     <lightning-card title="Suggestions" icon-name="custom:custom14">
-        <a href="">
-            You have {noOfSuggestions.data} Suggestions
-        </a>
+        <div class="slds-p-around_medium">
+            <a id="p" onclick={navigateToSuggestions}  >
+                You have {noOfSuggestions.data} Suggestions
+            </a>
+        </div>
     </lightning-card>
 </template>
