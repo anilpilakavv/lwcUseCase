@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-p-horizontal_xx-large">
+        <template if:true={insights.data}>
+            <ul class="slds-grid slds-grid_pull-padded slds-wrap">
+                <template for:each={insights.data} for:item="insight">
+                    <c-insight-tile
+                        key={insight}
+                        insight={insight}
+                        class="slds-p-around_x-small slds-size_1-of-1 slds-medium-size_1-of-1">
+                    </c-insight-tile>
+                </template>
+            </ul>
+        </template>
+    </div>
+</template>
