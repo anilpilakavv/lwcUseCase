@@ -1,20 +1,22 @@
 <template>
     <div class="slds-grid slds-wrap">
-        <lightning-card class="slds-col slds-size_3-of-12">
-            <lightning-vertical-navigation selected-item="Call">
-                <lightning-vertical-navigation-section label="Filters">
-                    <lightning-vertical-navigation-item-icon label="Schedule Call" 
-                        name="Call"
-                        onclick={handleEvent}
-                        icon-name="standard:event"
-                        ></lightning-vertical-navigation-item-icon>
-                    <lightning-vertical-navigation-item-icon label="Send Email" 
-                        name="Email"
-                        onclick={handleEvent}
-                        icon-name="standard:email"
-                        ></lightning-vertical-navigation-item-icon>
-                </lightning-vertical-navigation-section>
-            </lightning-vertical-navigation>     
-        </lightning-card>
+        <div class="slds-col slds-size_12-of-12">
+            <lightning-card >
+                <lightning-vertical-navigation selected-item="Call">
+                    <lightning-vertical-navigation-section label="Filters">
+                        <lightning-vertical-navigation-item-icon label="Schedule Call" 
+                            name="Call"
+                            onclick={handleEvent}
+                            icon-name="standard:event"
+                            ></lightning-vertical-navigation-item-icon>
+                        <lightning-vertical-navigation-item-icon label="Send Email" 
+                            name="Email"
+                            onclick={handlevent}
+                            icon-name="standard:email"
+                            ></lightning-vertical-navigation-item-icon>
+                    </lightning-vertical-navigation-section>
+                </lightning-vertical-navigation>     
+            </lightning-card>
+        </div>
     </div>
 </template>
