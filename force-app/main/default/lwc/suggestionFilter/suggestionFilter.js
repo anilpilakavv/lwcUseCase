@@ -1,10 +1,21 @@
-import { LightningElement, track, api, wire } from 'lwc';
-import getFilteredSuggestions from '@salesforce/apex/SuggestionFilterController.getFilteredSuggestions';
+import { LightningElement, api, wire } from 'lwc';
+import{CurrentPageReference} from 'lightning/navigation';
+import { fireEvent } from 'c/pubsub';
 
 export default class SuggestionFilter extends LightningElement {
-    @api filter = "Call"; //filters in picklist in org are currently "Call" and "Email"
-    @track filteredSugList;
-        
+    @api filter; //filters in picklist in org are currently "Call" and "Email"
+
+    @wire(CurrentPageReference) pageRef;  
+    
+    handleEvent(event){
+        this.filter = event.target.name;
+        fireEvent(this.pageRef, 'suggestionfilterselected', this.filter);
+        console.log("Event handled. Filter is now ", this.filter);
+    }
+    
+}
+
+/*    
     @wire(getFilteredSuggestions,{f: '$filter'})    
     handleData(sList, error){
         if (sList) {
@@ -17,15 +28,8 @@ export default class SuggestionFilter extends LightningElement {
             console.log("List is false")
         } 
         console.log("Wire Triggered. List is ", this.filteredSugList);       
-    }   
-    
-    handleEvent(event){
-        this.filter = event.target.name;
-        console.log("Event handled. Filter is now ", this.filter);
-        console.log("sugg list is ",this.filteredSugList)
-        //Probably need something here to update the Suggestions list and store it in this.filteredSugList
-    }
-}
+    }  
+    */ 
 
 /*  Needs to currently have two options: (Filter by channel type)
         Sort by Schedule
