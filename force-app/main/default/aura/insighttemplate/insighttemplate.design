@@ -1,0 +1,14 @@
+<design:component label="Header Main Region custom template">
+    <flexipage:template >
+        <!-- The default width for the "left" region is "MEDIUM". In tablets,
+        the width is "SMALL" -->
+            <flexipage:region name="header1" label="header1" defaultWidth="LARGE">
+                <flexipage:formfactor type="LARGE" width="SMALL" />
+            </flexipage:region>
+            <flexipage:region name="header2" label="header2" defaultWidth="LARGE" />
+       </flexipage:template>
+       <design:supportedFormFactors>
+        <design:supportedFormFactor type="Small"/>
+        <design:supportedFormFactor type="Large"/>
+    </design:supportedFormFactors>
+</design:component>
