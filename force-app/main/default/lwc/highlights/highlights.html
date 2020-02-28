@@ -1,0 +1,23 @@
+<template>
+    <div class= "card">
+        <!--Header-->
+        <div class="card__header ">
+            <h1>Highlights</h1>
+        </div>
+        
+        <!--Body-->
+        <div class="card__body ">
+            <ul class="parent">
+                <template if:true={highlights}>
+                    <template for:each={highlights} for:item="highlight">
+                        <li key={highlight.Id}>
+                            <p>{highlight.createdDate}</p>
+                            <c-highlight-card highlight={highlight.Description__c} subject={highlight.Subject__c} date={highlight.createdDate}>
+                            </c-highlight-card>
+                        </li>
+                    </template>
+                </template>
+            </ul>
+        </div>
+    </div>
+</template>
