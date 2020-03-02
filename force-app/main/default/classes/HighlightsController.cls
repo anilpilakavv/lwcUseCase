@@ -11,7 +11,7 @@ public class HighlightsController {
         [SELECT ID, Name, Description__c, Priority__c, Subject__c, createdDate
         FROM Insight__c
         WHERE Highlight__c=TRUE Order By createdDate Desc];
-        
+
         return highlightsList;
     }
 

@@ -4,15 +4,15 @@
             <!--Body-->
             <div class="card__body ">
                 <div class="slds-grid slds-gutters">
-                    <div class="slds-col slds-size_1-of-7">
+                    <div class="slds-col slds-size_1-of-5">
                         <span>
                             <lightning-icon icon-name={icon} ></lightning-icon>
                         </span>
                     </div>
-                    <div class="slds-col slds-size_6-of-7">
+                    <div class="slds-col slds-size_4-of-5">
                         <span>
                             <h2>
-                                {highlight}
+                                {highlight.Description__c}
                             </h2>
                         </span>
                     </div>
@@ -23,10 +23,10 @@
             <!--Footer-->
             <div class="card__footer">
                 <span class= "card__footer-type">
-                    {subject}
+                    {highlight.Subject__c}
                 </span>
                 <span class= "card__footer-date">
-                    <p><lightning-formatted-date-time value={date} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time></p>
+                    <p><lightning-formatted-date-time value={highlight.createdDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time></p>
                 </span>
             </div>
             <br/>

@@ -11,8 +11,7 @@
                 <template if:true={highlights}>
                     <template for:each={highlights} for:item="highlight">
                         <li key={highlight.Id}>
-                            <p>{highlight.createdDate}</p>
-                            <c-highlight-card highlight={highlight.Description__c} subject={highlight.Subject__c} date={highlight.createdDate}>
+                            <c-highlight-card highlight={highlight}>
                             </c-highlight-card>
                         </li>
                     </template>
