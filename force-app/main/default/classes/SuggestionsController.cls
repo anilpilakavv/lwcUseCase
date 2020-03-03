@@ -12,4 +12,34 @@ public with sharing class SuggestionsController {
         list<Suggestion__c> suggestionsList = [SELECT id, Account__c, Account__r.Name, Rank__c, Status__c, Subject__c, SuggestedDateAndTime__c, UserAction__c, CreatedDate, Description_Rich_Text__c, ChannelType__c FROM Suggestion__c ORDER BY CreatedDate DESC LIMIT 3 OFFSET :queryOffset];  
         return suggestionsList;
     }
+
+    public class suggestionRecordResult{
+        @AuraEnabled
+        public Integer totalRecordCount { get; set; }
+
+        @AuraEnabled
+        public List<Suggestion__c> suggestionRecords {get;set;}
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static suggestionRecordResult getSuggestionRecords(Integer queryOffset, String filterkey){
+
+        suggestionRecordResult recordResult = new suggestionRecordResult();
+
+        String countQuery = 'SELECT count() FROM Suggestion__c ';
+
+        String query = 'SELECT id, Account__c, Account__r.Name, Rank__c, Status__c, Subject__c,' + 'SuggestedDateAndTime__c, UserAction__c, CreatedDate, Description_Rich_Text__c, ChannelType__c FROM Suggestion__c ';  
+
+        if (!String.isBlank(filterkey)) {
+            query = query + 'WHERE ChannelType__c =: filterkey';
+            countQuery = countQuery + 'WHERE ChannelType__c =: filterkey';
+        }
+
+        query = query + 'ORDER BY CreatedDate DESC LIMIT 3 OFFSET :queryOffset';
+
+        recordResult.suggestionRecords = Database.query(query);
+        recordResult.totalRecordCount = Database.query(countQuery); 
+
+        return recordResult;
+    }
 }

@@ -3,12 +3,14 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import suggestionList from '@salesforce/apex/SuggestionsController.getSuggestions';
 import getMoreSuggestions from '@salesforce/apex/SuggestionsController.getMoreSuggestions';
+// import getSuggestionRecords from '@salesforce/apex/SuggestionsController.getSuggestionRecords';
 
 export default class SuggestionTileList extends LightningElement {
     @track suggestions;
     @track suggestionData;
     queryOffset = 0;
     @track loaded = false;
+    filterkey = '';
 
 
     @wire(CurrentPageReference) pageRef;
@@ -16,11 +18,23 @@ export default class SuggestionTileList extends LightningElement {
     //Lifecycle hook which fires when a component is inserted into the DOM
     connectedCallback(){
             //subscribing to the event
-            registerListener('suggestionfilterselected', this.suggestionfiltersubmit, this);            
+            registerListener('suggestionfilterselected', this.suggestionfiltersubmit, this);
+            console.log('calling from connectedCallback');            
     }  
     
     suggestionfiltersubmit(filterkey){
         console.log(' Filter key value from main component' , filterkey);
+
+        // getSuggestionRecords({queryOffset: this.queryOffset, filterkey: filterkey})
+        // .then(result => {
+        //     // Adding the records at the bottom of current list
+        //     //this.suggestionData = this.suggestionData.concat(result);
+        //     console.log(JSON.stringify(result));
+        // })
+        // .catch(error => {
+        //     console.log('-------error-------------'+error);
+        //     console.log(error);
+        // });
     }
 
     @wire(suggestionList)
