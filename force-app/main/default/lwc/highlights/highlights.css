@@ -1,0 +1,62 @@
+.card {
+    background-color: white;
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(109, 109, 109, 0.5);
+}
+
+.card__header{
+    padding: 20px;
+    padding-bottom: 0px;
+    font-weight: bold;
+    background-color: rgba(165, 165, 165, 0.5);
+}
+
+.card__body {
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-style: solid;
+    border-color: rgba(165, 165, 165, 0.500);
+    padding: 20px;
+    padding-bottom: 0px;
+    width: 100%;
+    height: 280px;
+    overflow-x: auto;
+    background-color: rgba(165, 165, 165, 0.5);
+}
+
+.card__footer {
+    padding: 20px;
+    padding-bottom: 30px;
+}
+
+.confirmButton{
+    float: right;
+}
+
+h1{
+    font-size: 20px;
+}
+
+h2{
+    font-size: 14px;
+}
+
+.parent {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.parent > li {
+    display: inline-flex;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}

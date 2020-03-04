@@ -12,7 +12,13 @@
                     </template>
                 </ul>
             </template>
-        </div>
+        </div>  
+    </div>
+
+    <div class="exampleHolder">
+        <template if:true={loaded}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
     </div>
     
 </template>
