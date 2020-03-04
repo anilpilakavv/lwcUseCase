@@ -19,6 +19,16 @@
                 <span><lightning-icon icon-name="utility:clock" size="xx-small"></lightning-icon></span>
                 <span> Posted {suggestion.CreatedDate}</span>  </div>        
                 <span class="slds-float_right"><lightning-button label="Accept" title="Accept" onclick={confirmSchedule}  class="slds-m-left_x-small"></lightning-button></span>
+                <!-- CBB Added Code Start -->
+                <span class="slds-float_right">
+                    <lightning-button label="Dismiss" 
+                        title="Dismiss" 
+                        onclick={updateStatusChbx}  
+                        class="slds-m-left_x-small"
+                        value={suggestion.Status__c}>
+                    </lightning-button>
+                </span>
+                <!-- CBB Added Code End -->
             </footer>
 
         </lightning-card>
