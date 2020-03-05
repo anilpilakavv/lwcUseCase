@@ -36,4 +36,8 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
         //Could be avoided by repopulating the entire list when you click a button on a tile.
     }
 
+    handleCloseModal(event){
+        this.showScheduleModal = event.detail; 
+    }
+
 }

@@ -1,9 +1,9 @@
 <template>
     <div class= "card">
         <!--Header-->
-        <div class="card__header ">
+        <header class="card__header ">
             <h1>Schedule</h1>
-        </div>
+        </header>
         
         <!--Body-->
         <div class="card__body ">
@@ -16,8 +16,8 @@
             <br/>
             <lightning-input name="eventLocation" type="text" label="Location" placeholder="Enter event location.." value={suggestionModal.ChannelType__c}></lightning-input>
             <br/>
-            <lightning-input name="eventStartTime" type="dateTime" label="Event Start Date and Time" placeholder=".." value={suggestionModal.SuggestedDateAndTime__c}></lightning-input>
-            <lightning-input name="eventEndTime" type="dateTime" label="Event End Date and Time" placeholder=".."></lightning-input>
+            <lightning-input name="eventStartTime" type="dateTime" label="Event Date and Time" placeholder=".." value={suggestionModal.SuggestedDateAndTime__c}></lightning-input>
+            <!--<lightning-input name="eventEndTime" type="dateTime" label="Event End Date and Time" placeholder=".."></lightning-input>-->
         </div>
         
         <!--Footer-->

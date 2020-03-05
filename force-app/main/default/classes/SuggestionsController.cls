@@ -38,8 +38,31 @@ public with sharing class SuggestionsController {
         query = query + 'ORDER BY CreatedDate DESC LIMIT 3 OFFSET :queryOffset';
 
         recordResult.suggestionRecords = Database.query(query);
-        recordResult.totalRecordCount = Database.query(countQuery); 
+        recordResult.totalRecordCount =(Integer) Database.countQuery(countQuery); 
 
         return recordResult;
+    }
+
+    @AuraEnabled
+    public static void acceptSchedule(Suggestion__c sugRecord, String userAction){
+        if(userAction == 'Accept'){
+            Suggestion__c updatedRecord = new Suggestion__c(Id = sugRecord.Id, 
+                                                            Status__c = true, 
+                                                            UserAction__c = 'Accepted'); 
+            update updatedRecord; 
+            Event e = new Event(Type = sugRecord.ChannelType__c, 
+                                Description = sugRecord.Subject__c, 
+                                WhatId = sugRecord.Account__c, 
+                                OwnerId = UserInfo.getUserId(), 
+                                Suggestion__c = sugRecord.Id, 
+                                DurationInMinutes = 30,
+                                ActivityDateTime = sugRecord.SuggestedDateAndTime__c); 
+            insert e;
+        }
+        else if(userAction == 'Dismiss'){
+            Suggestion__c updatedRecord = new Suggestion__c(Id = sugRecord.Id, 
+                                                        Status__c = true, 
+                                                        UserAction__c = 'Dismissed'); 
+        }
     }
 }

@@ -25,16 +25,16 @@ export default class SuggestionTileList extends LightningElement {
     suggestionfiltersubmit(filterkey){
         console.log(' Filter key value from main component' , filterkey);
 
-        // getSuggestionRecords({queryOffset: this.queryOffset, filterkey: filterkey})
-        // .then(result => {
-        //     // Adding the records at the bottom of current list
-        //     //this.suggestionData = this.suggestionData.concat(result);
-        //     console.log(JSON.stringify(result));
-        // })
-        // .catch(error => {
-        //     console.log('-------error-------------'+error);
-        //     console.log(error);
-        // });
+        getSuggestionRecords({queryOffset: this.queryOffset, filterkey: filterkey})
+            .then(result => {
+             // Adding the records at the bottom of current list
+             //this.suggestionData = this.suggestionData.concat(result);
+            console.log(JSON.stringify(result));
+            })
+            .catch(error => {
+            console.log('-------error-------------'+error);
+             console.log(error);
+            });
     }
 
     @wire(suggestionList)
