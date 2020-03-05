@@ -1,0 +1,9 @@
+.listBody{
+    background-color: white;
+}
+.sortButton{
+    text-align: center;
+}
+.buttonBox{
+    display:flex;
+}
