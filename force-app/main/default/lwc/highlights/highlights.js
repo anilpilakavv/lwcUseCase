@@ -7,8 +7,7 @@ export default class Highlights extends LightningElement
     errors;
 
     @wire(getHighlightsController)
-    wiredHighlights({ error, data }) 
-    {
+    wiredHighlights({ error, data }) {
         if (data) 
         {
             this.highlights = data;

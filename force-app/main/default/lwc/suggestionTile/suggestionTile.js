@@ -1,5 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
+import dismissEvent from '@salesforce/apex/SuggestionsController.dismissSchedule';
 
 export default class SuggestionTile extends NavigationMixin(LightningElement) {
     @api suggestion;
@@ -20,8 +21,14 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
     } 
 
     updateStatusChbx(){
-        this.suggestion.Status__c = true;
-        this.suggestion.UserAction__c = "Dismissed";
+        console.log('suggestion dismissed');
+        /* this.suggestion.Status__c = true;
+        this.suggestion.UserAction__c = "Dismissed"; */
+        console.log('suggestion '+JSON.stringify(this.suggestion));
+        dismissEvent({sugtnRecord: this.suggestion})
+        .then(result => {
+
+        })
         //Might need to use update record api and import the fields here.
         //This seems too simple and is likely to not actually write anything to the record, i'm guessing. 
         //Get record id of sugggestion object that is populating this tile. 

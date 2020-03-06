@@ -9,7 +9,7 @@ export default class SchedulePopupCard extends LightningElement {
         var modalVar = false; 
         const selectedEvent = new CustomEvent('closemodalvalue', {detail : modalVar}); 
         this.dispatchEvent(selectedEvent);
-        confirmEvent({sugRecord: this.suggestionModal})
+        confirmEvent({sugRecord: this.suggestionModal, userAction: 'Accept'})
         .then(result => {
 
         })

@@ -3,7 +3,9 @@
 }
 .sortButton{
     text-align: center;
+    display:flex;
 }
 .buttonBox{
     display:flex;
+    text-align: center;
 }
