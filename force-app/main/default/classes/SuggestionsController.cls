@@ -22,7 +22,7 @@ public with sharing class SuggestionsController {
         public List<Suggestion__c> suggestionRecords {get;set;}
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static suggestionRecordResult getSuggestionRecords(Integer queryOffset, String filterkey){
 
         suggestionRecordResult recordResult = new suggestionRecordResult();

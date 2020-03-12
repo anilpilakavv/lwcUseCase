@@ -38,7 +38,7 @@ export default class SuggestionTileList extends LightningElement {
             .catch(error => {
             console.log('-------error-------------'+JSON.stringify(error));
              console.log(error);
-            });
+        });
     }
 
     @wire(suggestionList)
@@ -74,6 +74,23 @@ export default class SuggestionTileList extends LightningElement {
            this.loaded = false;            
         }
         
+    }
+
+    handlesuggestionstatuschange(event){
+        const detail = event.detail;
+        if(detail === 'status changed'){
+            this.queryOffset = 0;
+            this.suggestionData = [];
+            console.log('Inside status change event');
+            getSuggestionRecords({queryOffset: this.queryOffset, filterkey: this.filterkey})
+                .then(result => {
+                this.suggestionData = result.suggestionRecords;
+                })
+                .catch(error => {
+                console.log('-------error-------------'+JSON.stringify(error));
+                console.log(error);
+            });
+        }
     }
 
     //Lifecycle hook which fires when a component is removed from the DOM

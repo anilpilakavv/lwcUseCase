@@ -28,7 +28,16 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
         dismissEvent({sugtnRecord: this.suggestion})
         .then(result => {
 
-        })
+        });
+
+        // Creates the event with the data.
+        const statusUpdatedEvent = new CustomEvent("suggestionstatusupdate", {
+            detail: 'status changed'
+        });
+
+        // Dispatches the event.
+        this.dispatchEvent(statusUpdatedEvent);
+
         //Might need to use update record api and import the fields here.
         //This seems too simple and is likely to not actually write anything to the record, i'm guessing. 
         //Get record id of sugggestion object that is populating this tile. 
