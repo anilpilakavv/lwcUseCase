@@ -1,6 +1,8 @@
 import { LightningElement, track, wire  } from 'lwc';
 import getInsights from '@salesforce/apex/insightsController.getInsights';
 import sortedList from '@salesforce/apex/insightsController.getInsightSorted'; 
+import HideLightningHeader from '@salesforce/resourceUrl/HideLightningHeader';
+import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
 
 export default class InsightTileList extends LightningElement {
 
@@ -9,6 +11,10 @@ export default class InsightTileList extends LightningElement {
     @track iconuppriority; 
     @track iconupbrand; 
     @track iconupdate; 
+
+    connectedCallback(){
+        loadStyle(this, HideLightningHeader);
+    }
 
     @wire(getInsights) 
     getInsights(result){

@@ -3,6 +3,8 @@ import { CurrentPageReference } from 'lightning/navigation';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import suggestionList from '@salesforce/apex/SuggestionsController.getSuggestions';
 import getSuggestionRecords from '@salesforce/apex/SuggestionsController.getSuggestionRecords';
+import HideLightningHeader from '@salesforce/resourceUrl/HideLightningHeader';
+import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
 
 export default class SuggestionTileList extends LightningElement {
     @track suggestions;
@@ -10,6 +12,7 @@ export default class SuggestionTileList extends LightningElement {
     queryOffset = 0;
     @track loaded = false;
     filterkey = '';
+    @track pageheader; 
 
 
     @wire(CurrentPageReference) pageRef;
@@ -18,7 +21,8 @@ export default class SuggestionTileList extends LightningElement {
     connectedCallback(){
             //subscribing to the event
             registerListener('suggestionfilterselected', this.suggestionfiltersubmit, this);
-            console.log('calling from connectedCallback');       
+            console.log('calling from connectedCallback');   
+            loadStyle(this, HideLightningHeader);
     }  
     
     suggestionfiltersubmit(filterkey){
@@ -75,5 +79,11 @@ export default class SuggestionTileList extends LightningElement {
     //Lifecycle hook which fires when a component is removed from the DOM
     disconnectedCallback() {
         unregisterAllListeners(this);
+       
     }
+
+    /* renderedCallback(){
+       this.pageheader= this.querySelector('slds-page-header');
+       this.pageheader= 'display:none';
+    } */
 }
