@@ -61,11 +61,11 @@ public with sharing class SuggestionsController {
                                 ActivityDateTime = sugRecord.SuggestedDateAndTime__c); 
             insert e;
         }
-        else if(userAction == 'Dismiss'){
+        /*else if(userAction == 'Dismiss'){
             Suggestion__c updatedRecord = new Suggestion__c(Id = sugRecord.Id, 
                                                         Status__c = true, 
                                                         UserAction__c = 'Dismissed'); 
-        }
+        }*/
     }
 
     @AuraEnabled
@@ -73,5 +73,6 @@ public with sharing class SuggestionsController {
         Suggestion__c updatedRecord = new Suggestion__c(Id = sugtnRecord.Id, 
                                                         Status__c = true, 
                                                         UserAction__c = 'Dismissed'); 
+        update updatedRecord; 
     }
 }
