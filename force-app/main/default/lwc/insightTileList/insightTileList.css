@@ -4,8 +4,12 @@
 .sortButton{
     text-align: center;
     display:flex;
+    padding-left: 30%;
 }
 .buttonBox{
     display:flex;
     text-align: center;
+}
+.buttonBoxGrid{
+    padding-left: 5%;
 }
