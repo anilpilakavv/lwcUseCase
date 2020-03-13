@@ -4,7 +4,8 @@
 .sortButton{
     text-align: center;
     display:flex;
-    padding-left: 30%;
+    padding-left: 28%;
+    font-family: var(--c-myFontFamily);
 }
 .buttonBox{
     display:flex;

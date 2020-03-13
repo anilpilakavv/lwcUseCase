@@ -1,0 +1,4 @@
+<aura:tokens>
+    <aura:token name="myPrimaryColor" value="#2d53e2"/>
+    <aura:token name="myFontFamily"  value="Roboto-Medium"/>
+</aura:tokens>

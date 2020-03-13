@@ -14,7 +14,7 @@ public with sharing class SuggestionsController {
         return suggestionsList;
     }
 
-    public class suggestionRecordResult{
+    public class SuggestionRecordResult{
         @AuraEnabled
         public Integer totalRecordCount { get; set; }
 

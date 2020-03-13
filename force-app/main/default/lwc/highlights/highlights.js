@@ -1,5 +1,5 @@
 import { LightningElement, wire, track } from 'lwc';
-import getHighlightsController from '@salesforce/apex/HighlightsController.getHighlightsController';
+import getHighlightsController from '@salesforce/apex/insightsController.getHighlightsController';
 
 export default class Highlights extends LightningElement
 {
