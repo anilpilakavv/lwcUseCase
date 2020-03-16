@@ -14,7 +14,7 @@ public with sharing class SuggestionsController {
         return suggestionsList;
     }
 
-    public class SuggestionRecordResult{
+    public class suggestionRecordResult{
         @AuraEnabled
         public Integer totalRecordCount { get; set; }
 
@@ -22,7 +22,7 @@ public with sharing class SuggestionsController {
         public List<Suggestion__c> suggestionRecords {get;set;}
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static suggestionRecordResult getSuggestionRecords(Integer queryOffset, String filterkey){
 
         suggestionRecordResult recordResult = new suggestionRecordResult();
@@ -34,6 +34,8 @@ public with sharing class SuggestionsController {
         if (!String.isBlank(filterkey)) {
             query = query + 'WHERE ChannelType__c =: filterkey AND Status__c = false';
             countQuery = countQuery + 'WHERE ChannelType__c =: filterkey AND Status__c = false';
+        } else {
+            query = query + 'WHERE Status__c = false';
         }
 
         query = query + ' ORDER BY CreatedDate DESC LIMIT 3 OFFSET :queryOffset';
