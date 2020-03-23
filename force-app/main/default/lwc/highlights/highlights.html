@@ -8,10 +8,9 @@
         <!--Body-->
         <div class="card__body ">
             <ul class="parent">
-                <template if:true={highlights}>
+                <template if:true={renderCards}>
                     <template for:each={highlights} for:item="highlight">
                         <li key={highlight.Id}>
-                            <p>{highlight.createdDate}</p>
                             <c-highlight-card highlight={highlight.Description__c} subject={highlight.Subject__c} date={highlight.createdDate}>
                             </c-highlight-card>
                         </li>
