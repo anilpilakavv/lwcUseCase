@@ -2,6 +2,7 @@
     max-height: 700px;
     overflow: auto;
     position: relative;
+    background-color: white;
 }
 .scrollArea {
     position: relative;
@@ -22,4 +23,13 @@
     display: inline-block;
     width: 80px;
     height: 80px;
+}
+.container{
+    background-color: white;
+}
+.filterContainer{
+    background-color: #d1d9e19e;
+    margin-right: 1px black;
+    height:100%;
+    padding-top: 2rem;
 }

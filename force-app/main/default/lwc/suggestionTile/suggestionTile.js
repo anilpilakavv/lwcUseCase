@@ -5,6 +5,17 @@ import dismissEvent from '@salesforce/apex/SuggestionsController.dismissSchedule
 export default class SuggestionTile extends NavigationMixin(LightningElement) {
     @api suggestion;
     @track showScheduleModal = false;
+   
+    //to get the formated posted from created date time 
+    get formattedDate(){
+        var date = new Date(this.suggestion.CreatedDate);
+        var month = date.getMonth();
+        //var monthcaps = month.toUpperCase(); 
+        //console.log('month '+JSON.stringify(month));  
+        var year = date.getFullYear(); 
+        var day = date.toISOString().slice(8,10);
+        return month +'/'+day+'/'+year;  
+    }
 
     handleSuggestionSelected() {
         this[NavigationMixin.Navigate]({
@@ -17,6 +28,7 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
     }
 
     confirmSchedule(){
+        console.log('confirm schedule ');
         this.showScheduleModal = true;
     } 
 

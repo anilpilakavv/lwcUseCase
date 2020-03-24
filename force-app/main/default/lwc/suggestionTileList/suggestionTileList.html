@@ -1,4 +1,13 @@
 <template>
+    <!-- added lightning layout to change the template of page-->
+    <div class="container">
+    <lightning-layout >
+        <lightning-layout-item size="2">
+            <div class="filterContainer">
+                <c-suggestion-filter></c-suggestion-filter>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="10">
     <div class="scrollContainer slds-p-around_small" onscroll={loadMoreRecords}>
         <div class="scrollArea" >
             <template if:true={suggestionData}>
@@ -15,11 +24,12 @@
             </template>
         </div>  
     </div>
-
+</lightning-layout-item>
+</lightning-layout>
     <div class="exampleHolder">
         <template if:true={loaded}>
             <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
         </template>
     </div>
-    
+    </div>
 </template>
