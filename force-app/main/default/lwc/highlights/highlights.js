@@ -3,9 +3,9 @@ import getHighlightsController from '@salesforce/apex/insightsController.getHigh
 
 export default class Highlights extends LightningElement
 {
-    highlights;
+    @track highlights;
     errors;
-    renderCards;
+    @track renderCards;
 
     @wire(getHighlightsController)
     wiredHighlights({ error, data }) {
@@ -14,6 +14,7 @@ export default class Highlights extends LightningElement
             this.highlights = data;
             this.error = undefined;
             this.renderCards=true;
+            console.log('highlights '+this.highlights);
         } 
         else if (error) 
         {

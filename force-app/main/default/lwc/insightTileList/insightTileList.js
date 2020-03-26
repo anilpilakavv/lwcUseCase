@@ -11,9 +11,17 @@ export default class InsightTileList extends LightningElement {
     @track iconuppriority; 
     @track iconupbrand; 
     @track iconupdate; 
+    @track activebtn = 'highlightBtn';
+    @track btn; 
 
     connectedCallback(){
         loadStyle(this, HideLightningHeader);
+        //this.template.querySelector('.dateBtn').classList.add('highlightBtn');
+    }
+    
+    constructor(){
+        super(); 
+        //this.template.querySelector('.dateBtn').classList.add('highlightBtn'); 
     }
 
     @wire(getInsights) 
@@ -22,10 +30,14 @@ export default class InsightTileList extends LightningElement {
             this.insights = result.data;
             //console.log('suggestiondata '+JSON.stringify(this.suggestionData));
         }
+        
     }
 
     sortbyPriority(){
         console.log('insights before '+JSON.stringify(this.insights))
+        this.template.querySelector('.priorityBtn').classList.add('highlightBtn');
+        this.template.querySelector('.brandBtn').classList.remove('highlightBtn');
+        this.template.querySelector('.dateBtn').classList.remove('highlightBtn'); m
         sortedList({sortField : 'Priority'})
             .then(result => {
 
@@ -37,15 +49,30 @@ export default class InsightTileList extends LightningElement {
                  console.log(error);
                 });
             //console.log('insights in priority '+result);
+            
     }
     sortbyBrand(){
+       
+       /*  this.highlightPriority = ''; 
+        this.highlightBrand='button_margin'; 
+        this.highlightDate=''; */
         sortedList({sortField : 'Brand'})
             .then(result => {
                 this.insights = result;
             })
             console.log('insights '+JSON.stringify(this.insights.data));
+            this.template.querySelector('.priorityBtn').classList.remove('highlightBtn');
+            this.template.querySelector('.brandBtn').classList.add('highlightBtn');
+            this.template.querySelector('.dateBtn').classList.remove('highlightBtn'); 
+            this.classList.remove('activebtn');
     }
     sortbyDate(){
+        this.template.querySelector('.priorityBtn').classList.remove('highlightBtn');
+        this.template.querySelector('.brandBtn').classList.remove('highlightBtn');
+        this.template.querySelector('.dateBtn').classList.add('highlightBtn'); 
+        /* this.highlightPriority = ''; 
+        this.highlightBrand=''; 
+        this.highlightDate='button_margin'; */
         sortedList({sortField : 'Posted Date'})
             .then(result => {
                 this.insights = result;

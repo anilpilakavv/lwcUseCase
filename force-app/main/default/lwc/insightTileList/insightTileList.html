@@ -2,50 +2,22 @@
     <div class="slds-p-horizontal_xx-large listBody">
         <div class="sortButton slds-p-around_small">
         
+            <div>
+                <button title="priority"  class ="slds-button slds-button_neutral priorityBtn" onclick={sortbyPriority}>By priority</button>
+            </div>
+            
             <div >
-                <div class="slds-box slds-box_small buttonBox" onclick={sortbyPriority}>
-                    <div>
-                        <template if:true={iconuppriority}>
-                            <lightning-icon icon-name="utility:arrowup" size="x-small"></lightning-icon>
-                        </template>
-                        <template if:false={iconuppriority}>
-                            <lightning-icon icon-name="utility:arrowdown" size="x-small"></lightning-icon>
-                        </template>
-                    </div>
-                <div class="sortTitle">By priority</div>
-                </div>
+                <button title="brand"  class ="slds-button slds-button_neutral brandBtn" onclick={sortbyBrand}>By brand</button>
             </div>
             <div >
-                <div class="slds-box slds-box_small buttonBox"  onclick={sortbyBrand}>
-                    <div>
-                        <template if:true={iconupbrand}>
-                            <lightning-icon icon-name="utility:arrowup" size="x-small"></lightning-icon>
-                        </template>
-                        <template if:false={iconupbrand}>
-                            <lightning-icon icon-name="utility:arrowdown" size="x-small"></lightning-icon>
-                        </template>
-                    </div>
-                <div class="sortTitle">By brand</div>
-                </div>
-            </div>
-            <div >
-                <div class="slds-box slds-box_small buttonBox"  onclick={sortbyDate}>
-                    <div>
-                        <template if:true={iconupdate}>
-                            <lightning-icon icon-name="utility:arrowup" size="x-small"></lightning-icon>
-                        </template>
-                        <template if:false={iconupdate}>
-                            <lightning-icon icon-name="utility:arrowdown" size="x-small"></lightning-icon>
-                        </template>
-                    </div>
-                <div class="sortTitle">By posted date</div>
-                </div>
+                <button  title="postedDate" class ="slds-button slds-button_neutral {activebtn} dateBtn" onclick={sortbyDate}>By posted date</button>
+               
             </div>
             <div>
                 <div class="buttonBox buttonBoxGrid">
-                    <div class="slds-box slds-box_small">
-                    <lightning-icon icon-name="utility:rows" size="x-small"></lightning-icon></div>
-                    <div class="slds-box slds-box_small"><lightning-icon icon-name="utility:apps" size="x-small"></lightning-icon></div>
+                    <div class="slds-box slds-box_xx-small">
+                        <lightning-icon icon-name="utility:rows" size="x-small"></lightning-icon></div>
+                        <div class="slds-box slds-box_xx-small"><lightning-icon icon-name="utility:apps" size="x-small"></lightning-icon></div>
                 </div>
             </div>
 

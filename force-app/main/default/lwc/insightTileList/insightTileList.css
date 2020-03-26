@@ -14,3 +14,16 @@
 .buttonBoxGrid{
     padding-left: 5%;
 }
+
+.slds-button_neutral{
+    color: black;
+}
+.highlightBtn{
+    background-color:#007CBA;
+    color: white;
+}
+
+.activebtn{
+    background-color:#007CBA;
+    color: white;
+}
