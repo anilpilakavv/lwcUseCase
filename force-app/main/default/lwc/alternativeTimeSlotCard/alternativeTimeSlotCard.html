@@ -1,24 +1,30 @@
 <template>
-    <lightning-card  title="Time Conflict">
-        <p class="slds-p-horizontal_small">
+
+    <div class= "card">
+        <!--Header-->
+        <header class="card__header ">
+            <h1>Time Conflict</h1>
+            
+        </header>
+        
+        <!--Body-->
+        <div class="card__body ">
             This even has a conflict with an existing event.</br>
             Select a different Time Slot from the dropdown and click OK to confirm.
-        </p></br>
+            </br>
 
-        &nbsp; &nbsp; Alternative time &nbsp;
-        <div class="slds-form-element">
-            <label class="slds-form-element__label">
-                <template if:true={isAttributeRequired}>
-                    <abbr title="required">*</abbr>
-                </template>
-                <span class="">{fieldLabelName}</span>
-            </label>
-            <div class="slds-form-element__control">
-                <div class="slds-select_container">
-                    <select class="slds-select" 
-                            onchange={selectionChangeHandler} 
-                            disabled={isPicklistDisabled}
-                            required={isAttributeRequired}>
+            <div class="slds-form-element altTime-picklist">
+                Alternative time &nbsp;:&nbsp;
+                <label class="slds-form-element__label">
+                    <template if:true={isAttributeRequired}>
+                        <abbr title="required">*</abbr>
+                    </template>
+                    <span class="">{fieldLabelName}</span>
+                </label>
+                <div class="slds-form-element__control">
+                    <div class="slds-select_container">
+                        <select class="slds-select" 
+                        onchange={selectionChangeHandler}>
                         <option value="Select">Select</option>
                         <template for:each={altTime} for:item="time">
                             <option key={time} class="uiInputSelectOption" value={time}>
@@ -29,6 +35,15 @@
                 </div>
             </div>
         </div>
-        <lightning-button label="Ok" onclick={findNextTimeSlot} slot="footer"></lightning-button>
-    </lightning-card>
+        
+        <!--Footer-->
+        <div class="card__footer">
+            <span class= "confirmButton">
+                <lightning-button label="Confirm" onclick={confirmTimeSlotHandler}></lightning-button>
+            </span>
+        </div>
+    </div>
+    </div>
+    
+    
 </template>
