@@ -20,6 +20,18 @@
 .richTextClass{
     color: rgb(81, 79, 77);
 }
+
+.textTruncate{
+    max-height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.textTruncate::-webkit-scrollbar {
+    display: none;
+}
+
 .slds_card{
     font-weight: 550;
 }

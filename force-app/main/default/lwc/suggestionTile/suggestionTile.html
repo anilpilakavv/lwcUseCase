@@ -40,7 +40,7 @@
 
         <!-- refactored lightning card to custom code as modifying css is not flexible in card-->
         <article class="slds-card"  style="background-color: rgb(227, 237, 245)">
-            <div class="slds-card__header slds-grid" >
+            <div class="slds-card__header slds-grid" onclick={handleSuggestionSelected}>
                 <header class="slds-media slds-media_center slds-has-flexi-truncate">
                     <div class="slds-media__figure">
                             <span class="" title="account">
@@ -57,35 +57,42 @@
                             <lightning-icon icon-name="utility:monthlyview"  alternative-text="Calender" title="Calender" onclick={confirmSchedule} variant="brand" size="small"></lightning-icon>
                         </div>
                 </header>
-                </div>
-        <div class="slds-card__body slds-card__body_inner" onclick={handleSuggestionSelected}>
-            <div  >
-                <span>
-                <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon></span>
-                <span class="slds-p-left_x-small suggestionSubjectText">{suggestion.Subject__c}</span>
-                <p><br/> </p>
-                <lightning-formatted-rich-text class="richTextClass"
-                    value={suggestion.Description_Rich_Text__c}
-                ></lightning-formatted-rich-text>
             </div>
-        </div>
-        <footer role="contentinfo" class="class_footer">
-            <div class="slds-float_left slds-p-top_small">
-                <span><lightning-icon icon-name="utility:clock" size="xx-small"></lightning-icon></span>
-                <span> Posted <lightning-formatted-date-time value={suggestion.CreatedDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time></span>  </div> 
-               
-                <span class="slds-float_right">
-                    <button title="Dismiss" 
-                            onclick={updateStatusChbx}  
-                            class="slds-button slds-button_neutral slds-m-left_small class-button"
-                            value={suggestion.Status__c}>Dismiss</button>
-                </span>    
-                <span class="slds-float_right">
-                    <button title="Accept" 
-                            onclick={confirmSchedule}  
-                            class="slds-button slds-button_neutral slds-m-left_small class-button">Accept</button>
-                </span>
-        </footer>
+            <div class="slds-card__body slds-card__body_inner">
+                <div >
+                    <span>
+                    <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon></span>
+                    <span class="slds-p-left_x-small suggestionSubjectText">{suggestion.Subject__c}</span>
+                    <p><br/> </p>
+                    
+                    <span>
+                        <div class="textTruncate">
+                            <lightning-formatted-rich-text class="richTextClass"
+                            value={suggestion.Description_Rich_Text__c}></lightning-formatted-rich-text>
+                        </div>
+                        <template if:true={characterCount}>
+                            <span>... <a onclick={rendermore}>read more</a></span>
+                        </template>
+                    </span>
+                </div>
+            </div>
+            <footer role="contentinfo" class="class_footer">
+                <div class="slds-float_left slds-p-top_small">
+                    <span><lightning-icon icon-name="utility:clock" size="xx-small"></lightning-icon></span>
+                    <span> Posted <lightning-formatted-date-time value={suggestion.CreatedDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time></span>  </div> 
+                
+                    <span class="slds-float_right">
+                        <button title="Dismiss" 
+                                onclick={updateStatusChbx}  
+                                class="slds-button slds-button_neutral slds-m-left_small class-button"
+                                value={suggestion.Status__c}>Dismiss</button>
+                    </span>    
+                    <span class="slds-float_right">
+                        <button title="Accept" 
+                                onclick={confirmSchedule}  
+                                class="slds-button slds-button_neutral slds-m-left_small class-button">Accept</button>
+                    </span>
+            </footer>
         </article>
     
     </div>
@@ -96,6 +103,18 @@
                 <c-schedule-popup-card
                     suggestion-modal={suggestion} onclosemodalvalue ={handleCloseModal}>
                 </c-schedule-popup-card>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <template if:true={showDescriptionModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <c-description-modal
+                    description={suggestion.Description_Rich_Text__c}
+                    onclosedescription={hideDescriptionModal}>
+                </c-description-modal>  
             </div>
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>

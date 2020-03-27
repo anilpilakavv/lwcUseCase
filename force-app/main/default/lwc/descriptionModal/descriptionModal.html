@@ -1,0 +1,17 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid" >
+
+        </div>
+        <div class="slds-card__body slds-card__body_inner textTruncate">
+            <lightning-formatted-rich-text value={description}></lightning-formatted-rich-text>
+        </div>
+        <div class="card__footer">
+            <footer role="contentinfo">
+                <div class="slds-float_right">
+                    <lightning-button label="Ok" title="Ok" onclick={closeDescriptionModal} class="slds-m-center_x-small"></lightning-button>  
+                </div>                         
+            </footer>  
+        </div>
+    </article>
+</template>
