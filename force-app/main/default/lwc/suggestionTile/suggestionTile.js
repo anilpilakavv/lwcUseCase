@@ -5,6 +5,7 @@ import dismissEvent from '@salesforce/apex/SuggestionsController.dismissSchedule
 export default class SuggestionTile extends NavigationMixin(LightningElement) {
     @api suggestion;
     @track showScheduleModal = false;
+    showDescriptionModal = false;
    
     //to get the formated posted from created date time 
     get formattedDate(){
@@ -17,6 +18,21 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
         return month +'/'+day+'/'+year;  
     }
 
+    get characterCount(){
+        const descriptionText = this.suggestion.Description_Rich_Text__c;
+        const textLength = descriptionText.length;
+        console.log('descriptionText => ' + descriptionText);
+        console.log('textLength => ' + textLength);
+        var boolCount; 
+        if(textLength > 500){
+            boolCount = true; 
+        }
+        else{
+            boolCount= false; 
+        }
+        return boolCount;
+    }
+
     handleSuggestionSelected() {
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
@@ -25,6 +41,14 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
                 recordId: this.suggestion.Id
             }
         });
+    }
+
+    rendermore(){
+        this.showDescriptionModal = true;
+    }
+
+    hideDescriptionModal(){
+        this.showDescriptionModal = false;
     }
 
     confirmSchedule(){
