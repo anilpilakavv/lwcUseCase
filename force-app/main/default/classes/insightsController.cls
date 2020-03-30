@@ -30,7 +30,7 @@ public with sharing class insightsController {
     {
 
         List<Insight__c> highlightsList = 
-        [SELECT ID, Name, Description__c, Priority__c, Subject__c, createdDate
+        [SELECT ID, Name, Description__c, Priority__c, Subject__c, Brand__c, CreatedDate
         FROM Insight__c
         WHERE Highlight__c=TRUE Order By createdDate Desc];
 

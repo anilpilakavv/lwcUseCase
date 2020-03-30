@@ -2,13 +2,13 @@
     <div class="slds-box slds-box_small slds-p-around_xxx-small">
         <lightning-layout>
             <lightning-layout-item flexibility="auto" padding="around-small">
-                {formattedDate}
+                <div class="datediv">{formattedDate}</div>
             </lightning-layout-item>
             <lightning-layout-item flexibility="auto" padding="around-small">
-                {insight.Description__c}
+                <div class="descriptiondiv">{insight.Description__c}</div>
             </lightning-layout-item>
             <lightning-layout-item flexibility="auto" padding="around-small">
-                {insight.Brand__c}
+                <div class="branddiv">{insight.Brand__c}</div>
             </lightning-layout-item>
         </lightning-layout>
     </div>

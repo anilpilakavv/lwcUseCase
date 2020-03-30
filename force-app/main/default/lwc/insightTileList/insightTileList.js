@@ -11,7 +11,7 @@ export default class InsightTileList extends LightningElement {
     @track iconuppriority; 
     @track iconupbrand; 
     @track iconupdate; 
-    @track activebtn = 'highlightBtn';
+    @track activebtn = '';
     @track btn; 
 
     connectedCallback(){
@@ -37,7 +37,7 @@ export default class InsightTileList extends LightningElement {
         console.log('insights before '+JSON.stringify(this.insights))
         this.template.querySelector('.priorityBtn').classList.add('highlightBtn');
         this.template.querySelector('.brandBtn').classList.remove('highlightBtn');
-        this.template.querySelector('.dateBtn').classList.remove('highlightBtn'); m
+        this.template.querySelector('.dateBtn').classList.remove('highlightBtn'); 
         sortedList({sortField : 'Priority'})
             .then(result => {
 

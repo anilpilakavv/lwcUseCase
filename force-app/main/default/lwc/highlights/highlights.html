@@ -6,17 +6,27 @@
         </div>
         
         <!--Body-->
-        <div class="card__body ">
+         <div class="card__body ">
             <ul class="parent">
                 <template if:true={renderCards}>
                     <template for:each={highlights} for:item="highlight">
                         <li key={highlight.Id}>
-                            <c-highlight-card highlight={highlight.Description__c} subject={highlight.Subject__c} date={highlight.createdDate}>
+                            <c-highlight-card highlight={highlight}>
                             </c-highlight-card>
                         </li>
                     </template>
                 </template>
             </ul>
-        </div>
+        </div> 
+        <!--<div class="slickbody">
+            <template for:each={highlights} for:item="highlight">
+                <li key={highlight.Id}>
+                    <div>
+                        <c-highlight-card highlight={highlight}>
+                        </c-highlight-card>
+                    </div>
+                </li>
+            </template>   
+        </div>-->
     </div>
 </template>
