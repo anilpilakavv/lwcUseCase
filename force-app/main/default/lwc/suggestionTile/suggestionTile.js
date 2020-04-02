@@ -21,8 +21,6 @@ export default class SuggestionTile extends NavigationMixin(LightningElement) {
     get characterCount(){
         const descriptionText = this.suggestion.Description_Rich_Text__c;
         const textLength = descriptionText.length;
-        console.log('descriptionText => ' + descriptionText);
-        console.log('textLength => ' + textLength);
         var boolCount; 
         if(textLength > 500){
             boolCount = true; 

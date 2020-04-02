@@ -49,6 +49,13 @@ public with sharing class SuggestionsController {
         return recordResult;
     }
     
+    public static String getRecordsWhenPlatformEventFires(){
+        suggestionRecordResult recordResultToSerialize = new suggestionRecordResult();
+        recordResultToSerialize =  getSuggestionRecords(0, '');
+
+        return JSON.serialize(recordResultToSerialize);
+    }
+
     @AuraEnabled
     public static boolean acceptSchedule(Suggestion__c sugRecord, String userAction, Datetime altTime)
     {

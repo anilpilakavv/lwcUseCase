@@ -5,15 +5,17 @@ import suggestionList from '@salesforce/apex/SuggestionsController.getSuggestion
 import getSuggestionRecords from '@salesforce/apex/SuggestionsController.getSuggestionRecords';
 import HideLightningHeader from '@salesforce/resourceUrl/HideLightningHeader';
 import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
+import { subscribe, unsubscribe, onError, setDebugFlag, isEmpEnabled } from 'lightning/empApi';
+import { refreshApex } from '@salesforce/apex';
 
 export default class SuggestionTileList extends LightningElement {
     @track suggestions;
-    @track suggestionData;
+    @track suggestionData = [];
     queryOffset = 0;
     @track loaded = false;
     filterkey = '';
     @track pageheader; 
-
+    @track channelName = '/event/Suggestion_Insert__e';
 
     @wire(CurrentPageReference) pageRef;
 
@@ -23,6 +25,8 @@ export default class SuggestionTileList extends LightningElement {
             registerListener('suggestionfilterselected', this.suggestionfiltersubmit, this);
             console.log('calling from connectedCallback');   
             loadStyle(this, HideLightningHeader);
+            this.handleSubscribe();
+
     }  
     
     suggestionfiltersubmit(filterkey){
@@ -46,7 +50,7 @@ export default class SuggestionTileList extends LightningElement {
         this.suggestions = result;
         if (result.data) {
             this.suggestionData = result.data;
-            console.log('suggestiondata '+JSON.stringify(this.suggestionData));
+            console.log('suggestions data : ' + JSON.stringify(this.suggestionData));
         }
     }
 
@@ -103,4 +107,50 @@ export default class SuggestionTileList extends LightningElement {
        this.pageheader= this.querySelector('slds-page-header');
        this.pageheader= 'display:none';
     } */
+
+    handleSubscribe() {
+        // Callback invoked whenever a new event message is received
+        const messageCallback = function(response) {
+            console.log('New message received : ', JSON.stringify(response));    
+
+            this.suggestionData = [];
+            const msg = response.data.payload.Message__c;
+            console.log('data value : ', JSON.stringify(response.data));
+            console.log('message value : ', msg);
+            const sugg  = JSON.parse(msg).suggestionRecords;
+            
+            /*  window.clearTimeout(this.delayTimeout);
+            this.delayTimeout = setTimeout(() => {
+                this.suggestionData = sugg;
+            }, 5000); */
+            this.suggestionData = sugg;
+
+            console.log('suggestions data after PE : ' + JSON.stringify(this.suggestionData));
+
+            if(this.suggestionData){
+                console.log('suggestions data is TRUE');
+            }
+
+            //return refreshApex(this.suggestionData);
+
+            //to refresh the UI
+            eval("$A.get('e.force:refreshView').fire();");
+
+
+        };
+
+        // Invoke subscribe method of empApi. Pass reference to messageCallback
+        subscribe(this.channelName, -1, messageCallback).then(response => {
+            // Response contains the subscription information on successful subscribe call
+            console.log('Successfully subscribed to : ', JSON.stringify(response.channel));
+        });
+    }
+
+    registerErrorListener() {
+        // Invoke onError empApi method
+        onError(error => {
+            console.log('Received error from server: ', JSON.stringify(error));
+            // Error contains the server-side error
+        });
+    }
 }

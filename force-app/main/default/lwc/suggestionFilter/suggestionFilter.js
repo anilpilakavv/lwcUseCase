@@ -1,9 +1,10 @@
-import { LightningElement, api, wire } from 'lwc';
+import { LightningElement, api, wire, track } from 'lwc';
 import{CurrentPageReference} from 'lightning/navigation';
 import { fireEvent } from 'c/pubsub';
 
 export default class SuggestionFilter extends LightningElement {
     @api filter; //filters in picklist in org are currently "Call" and "Email"
+    @track channelName = '/event/Suggestion_Insert__e';
 
     @wire(CurrentPageReference) pageRef;  
     
@@ -11,7 +12,7 @@ export default class SuggestionFilter extends LightningElement {
         this.filter = event.target.name;
         fireEvent(this.pageRef, 'suggestionfilterselected', this.filter);
         console.log("Event handled. Filter is now ", this.filter);
-    }
+    }   
     
 }
 
